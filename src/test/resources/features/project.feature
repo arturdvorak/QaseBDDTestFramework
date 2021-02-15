@@ -1,9 +1,10 @@
 Feature: CRUD for projects in qase.io
     Scenario: Creation of project
-      Given project with the following parameters: "Name", "Code", "Description", "Private"
+      Given project with the following parameters: "Name17", "17", "Description17", "Private"
       When user "arimelka@yandex.by" with password "Q033008061zxcv" logs in
-      And opens Projects page
-      And creates a new project
+      And user creates a new project
+      And user opens Projects page
+      And user searches by project name
       Then user should see project in a list
       And user opens project
-      Then project details should be the following: "Name", "Code", "Description", "Private"
+      Then user checks project details
