@@ -2,7 +2,6 @@ package pages;
 
 import models.Project;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProjectsPage extends BasePage {
@@ -11,13 +10,8 @@ public class ProjectsPage extends BasePage {
     private static final By TITLE_NEW_PROJECT = By.xpath("//h1[text()='New Project']");
     private static final String TABLE_ROW_PROJECT_NAME = "//a[@class='defect-title' and text()='%s']";
 
-
-    public ProjectsPage(WebDriver driver) {
-        super(driver);
-    }
-
     public void openPage() {
-        driver.get(BASE_URL +"projects");
+        driver.get(BASE_URL + "projects");
     }
 
     public void openCreateProjectPage() {

@@ -40,4 +40,11 @@ public class WebDriverSingleton {
         driver = creator.factoryMethod();
         return driver;
     }
+
+    public static void close() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
+    }
 }

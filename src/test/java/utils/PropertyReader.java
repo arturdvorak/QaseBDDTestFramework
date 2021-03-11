@@ -6,7 +6,7 @@ import java.util.Properties;
 import java.util.function.Consumer;
 
 public class PropertyReader {
-    private static String propertiesPath ="/config.properties";
+    private static String propertiesPath = "/config.properties";
     private static volatile Properties properties;
     private static InputStream inputStream;
 
@@ -34,7 +34,7 @@ public class PropertyReader {
                 }
             }
         }
-        if(properties.getProperty("config_file")!=null){
+        if (properties.getProperty("config_file") != null) {
             Properties additionalProperties = getProperties(properties.getProperty("config_file"));
             properties.putAll(additionalProperties);
         }
@@ -64,7 +64,8 @@ public class PropertyReader {
         Object prop = null;
         try {
             prop = getProperty(name);
-        } catch (Exception ignore) {}
+        } catch (Exception ignore) {
+        }
         if (prop != null && !prop.equals(""))
             action.accept(prop.toString());
     }

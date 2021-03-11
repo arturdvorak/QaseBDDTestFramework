@@ -2,7 +2,6 @@ package pages;
 
 import models.Project;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CreateProject extends BasePage {
@@ -11,10 +10,6 @@ public class CreateProject extends BasePage {
     private static final By INPUT_PROJECT_DESCRIPTION = By.id("inputDescription");
     private static final By RADIO_BUTTON_PRIVATE_ACCESS = By.cssSelector("label[for='private-access-type']");
     private static final By BUTTON_CREATE_PROJECT = By.xpath("//button[text()='Create project']");
-
-    public CreateProject(WebDriver driver) {
-        super(driver);
-    }
 
     public void createNewProject(Project project) {
         driver.findElement(INPUT_PROJECT_NAME).sendKeys(project.getProjectName());

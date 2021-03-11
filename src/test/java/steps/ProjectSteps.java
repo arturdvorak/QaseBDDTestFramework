@@ -1,6 +1,5 @@
 package steps;
 
-import driver.BrowserType;
 import driver.WebDriverSingleton;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -9,19 +8,12 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import models.Project;
-import org.openqa.selenium.WebDriver;
 import pages.CreateProject;
 import pages.LoginPage;
 import pages.ProjectPage;
 import pages.ProjectsPage;
-import utils.PropertyReader;
 
 public class ProjectSteps {
-    public static String browserType;
-    public static String baseUrl;
-    String username;
-    String password;
-    private WebDriver driver;
     LoginPage loginPage;
     ProjectPage projectPage;
     ProjectsPage projectsPage;
@@ -30,15 +22,10 @@ public class ProjectSteps {
 
     @Before()
     public void setUp() {
-        baseUrl = PropertyReader.getFromEnvOrFile("BASE_URL", "base.url");
-        username = PropertyReader.getFromEnvOrFile("USERNAME", "username");
-        password = PropertyReader.getFromEnvOrFile("PASSWORD", "password");
-        browserType = PropertyReader.getFromEnvOrFile("BROWSER_TYPE", "browser.type");
-        driver = WebDriverSingleton.getWebDriverInstance(BrowserType.valueOf(browserType));
-        loginPage = new LoginPage(driver);
-        projectPage = new ProjectPage(driver);
-        projectsPage = new ProjectsPage(driver);
-        createProject = new CreateProject(driver);
+        loginPage = new LoginPage();
+        projectPage = new ProjectPage();
+        projectsPage = new ProjectsPage();
+        createProject = new CreateProject();
     }
 
     @Given("project with the following parameters: {string}, {string}, {string}, {string}")
@@ -91,8 +78,6 @@ public class ProjectSteps {
 
     @After()
     public void closeDriver() {
-        if (driver != null) {
-            driver.quit();
-        }
+        WebDriverSingleton.close();
     }
 }

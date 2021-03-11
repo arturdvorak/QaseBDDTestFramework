@@ -1,5 +1,7 @@
 package pages;
 
+import driver.BrowserType;
+import driver.WebDriverSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,9 +14,11 @@ public class BasePage {
     protected static final String SUBHEADER_PROJECT_CODE = "//span[@class='subheader' and text()='%s']";
     protected WebDriver driver;
     protected WebDriverWait wait;
+    protected String baseUrl;
 
-    public BasePage(WebDriver driver) {
-        this.driver = driver;
+    public BasePage() {
+        this.driver = WebDriverSingleton.getWebDriverInstance(BrowserType.valueOf(PropertyReader.getFromEnvOrFile("BROWSER_TYPE", "browser.type")));
         wait = new WebDriverWait(driver, 10);
+        baseUrl = PropertyReader.getFromEnvOrFile("BASE_URL", "base.url");
     }
 }

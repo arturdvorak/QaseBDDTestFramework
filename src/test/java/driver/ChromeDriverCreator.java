@@ -6,11 +6,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import static java.lang.System.setProperty;
 
-public class ChromeDriverCreator extends WebDriverCreator{
+public class ChromeDriverCreator extends WebDriverCreator {
     private static final String CHROME_PROPERTY = "webdriver.chrome.driver";
     private static final String driverPath = "src/test/resources";
-    private ChromeOptions options;
     private static String osName = System.getProperty("os.name").toLowerCase();
+    private ChromeOptions options;
 
     public WebDriver factoryMethod() {
         if (osName.contains("win")) {
