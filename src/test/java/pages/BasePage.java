@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.PropertyReader;
 
+import java.time.Duration;
+
 public class BasePage {
     protected static final By TITLE_PROJECTS = By.xpath("//h1[text()='Projects']");
     protected static final String BASE_URL = PropertyReader.getFromEnvOrFile("BASE_URL", "base.url");
@@ -18,7 +20,7 @@ public class BasePage {
 
     public BasePage() {
         this.driver = WebDriverSingleton.getWebDriverInstance(BrowserType.valueOf(PropertyReader.getFromEnvOrFile("BROWSER_TYPE", "browser.type")));
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         baseUrl = PropertyReader.getFromEnvOrFile("BASE_URL", "base.url");
     }
 }

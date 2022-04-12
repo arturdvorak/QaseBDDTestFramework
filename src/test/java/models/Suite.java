@@ -1,7 +1,7 @@
 package models;
 
-import io.cucumber.messages.internal.com.google.gson.annotations.Expose;
-import io.cucumber.messages.internal.com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
 import lombok.Data;
 
